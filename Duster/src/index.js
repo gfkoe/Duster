@@ -1,21 +1,19 @@
-require('dotenv').config();
 const { Client, GatewayIntentBits } = require('discord.js');
-const TOKEN = process.env.TOKEN;
+const { token } = require('./config.json');
 
 
-const client = new Discord.Client({
-  intents: [
-    GatewayIntentBits.Guilds,
-    GatewayIntentBits.GuildMessages,
-  ]
-})
+const client = new Client({ intents: [
+  GatewayIntentBits.Guilds,
+  GatewayIntentBits.GuildMessages
+] });
+
 
 client.once('ready', () => {
 	console.log('Ready!');
 });
 
 
-client.login(TOKEN);
+client.login(token);
 client.on('ready', () => {
     console.log('Logged in as Duster!');
 })
